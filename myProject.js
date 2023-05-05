@@ -18,16 +18,28 @@ function main ()
 
    const moneyAmount = depositMoney();
 
+
+
 }
 
 
 function welcomeMessage()
 {
     console.log("Hi welcome to my slot machine");
-    const userAge = prompt("Enter your age and we will determine whether you can use the slot machine or not. ");
 
-    return userAge;
+    while(true)
+    {
+        const userAge = prompt("Enter your age and we will determine whether you can use the slot machine or not. ");
+        const actualAge = parseFloat(userAge);
+    
+    if(isNaN(actualAge) ||actualAge <=0 || actualAge > 122 ) {
+        console.log("Invalid deposit age!!!, please try again.")
+    }
+    else{
+        return actualAge;
+    }
 
+   }
 }
 
 
@@ -49,8 +61,21 @@ function legal(userAge) {
 
 function depositMoney ()
 {
+    while(true) 
+    {
     const moneyAmount = prompt("Enter the amount of money you want to deposit: ");
+    const actualMoneyAmount = parseFloat(moneyAmount)
+
+    if(actualMoneyAmount <= 0 || isNaN(actualMoneyAmount)) 
+    {
+        
+        console.log("Invalid deposit amount!!!, please try again.")
     
-    return moneyAmount;
+    }else
+    {
+        return actualMoneyAmount;
+    }
+}
+    
 }
 
