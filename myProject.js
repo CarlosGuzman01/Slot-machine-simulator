@@ -16,11 +16,11 @@ function main ()
    
    legal(actualAge);
 
-   let moneyAmount = depositMoney();
+   let actualMoneyAmount = depositMoney();
 
    const actualNumberOfLines = gettingNumberOfLines();
 
-   const betAmount = getBetAmount(moneyAmount, actualNumberOfLines);
+   const actualBetAmount = getBetAmount(actualMoneyAmount, actualNumberOfLines);
 
 
 }
