@@ -16,11 +16,12 @@ function main ()
    
    legal(actualAge);
 
-   const moneyAmount = depositMoney();
+   let moneyAmount = depositMoney();
 
    const actualNumberOfLines = gettingNumberOfLines();
 
-   
+   const betAmount = getBetAmount(moneyAmount, actualNumberOfLines);
+
 
 }
 
@@ -96,4 +97,23 @@ function gettingNumberOfLines()
         }
     }
 }
+
+function getBetAmount(moneyAmount, actualNumberOfLines)
+{
+    while (true)
+    {
+        const betAmount = prompt("Enter the amount of money you want to bet per line. ");
+        const actualBetAmount = parseFloat(betAmount);
+
+        if(isNaN(actualBetAmount) || actualBetAmount <= 0 || actualBetAmount > moneyAmount/actualNumberOfLines)
+        {
+            console.log("Invalid bet amount!!! please try again.");
+        
+        }else{
+            return actualBetAmount;
+        }
+    }
+}
+
+
 
