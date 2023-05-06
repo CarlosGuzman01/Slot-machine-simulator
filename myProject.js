@@ -12,13 +12,15 @@ main();
 //main function
 function main ()
 {
-   const age = welcomeMessage();
+   const actualAge = welcomeMessage();
    
-   legal(age);
+   legal(actualAge);
 
    const moneyAmount = depositMoney();
 
+   const actualNumberOfLines = gettingNumberOfLines();
 
+   
 
 }
 
@@ -33,7 +35,7 @@ function welcomeMessage()
         const actualAge = parseFloat(userAge);
     
     if(isNaN(actualAge) ||actualAge <=0 || actualAge > 122 ) {
-        console.log("Invalid deposit age!!!, please try again.")
+        console.log("Invalid age!!!, please try again.")
     }
     else{
         return actualAge;
@@ -77,5 +79,21 @@ function depositMoney ()
     }
 }
     
+}
+
+function gettingNumberOfLines()
+{
+    while(true){
+        const numberOfLines = prompt("Enter the number of lines you want to bet on (1-3): ");
+        const actualNumberOfLines = parseFloat(numberOfLines);
+
+        if(isNaN(actualNumberOfLines) || actualNumberOfLines <= 0 || actualNumberOfLines > 3 )
+        {
+            console.log("Invalid number of lines!!! please try again");
+        }
+        else{
+            return actualNumberOfLines;
+        }
+    }
 }
 
