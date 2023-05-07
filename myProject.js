@@ -2,8 +2,24 @@
 //import package that allows user input
 const prompt = require("prompt-sync")();
 
+//global variables
+const ROWS = 3;
+const COLS = 3;
 
 
+const SYMBOLS_AMOUNT = {
+    "A": 2,
+    "B": 4,
+    "C": 6,
+    "D": 8
+}
+
+const SYMBOL_VALUES ={
+    "A": 5,
+    "B": 4,
+    "C": 3,
+    "D": 2
+}
 
 //calling main function
 main();
@@ -22,9 +38,7 @@ function main ()
 
    const actualBetAmount = getBetAmount(actualMoneyAmount, actualNumberOfLines);
 
-
 }
-
 
 function welcomeMessage()
 {
@@ -114,6 +128,8 @@ function getBetAmount(moneyAmount, actualNumberOfLines)
         }
     }
 }
+
+
 
 
 
