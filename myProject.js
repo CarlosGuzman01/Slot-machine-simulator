@@ -38,6 +38,8 @@ function main ()
 
    const actualBetAmount = getBetAmount(actualMoneyAmount, actualNumberOfLines);
 
+   const reels = spin();
+
 }
 
 function welcomeMessage()
@@ -128,6 +130,34 @@ function getBetAmount(moneyAmount, actualNumberOfLines)
         }
     }
 }
+
+function spinMachine()
+{
+    const symbols = [];
+    for ([symbol, amount] of Object.entries(SYMBOLS_AMOUNT)){
+        for(let i = 0; i < amount; i++){
+            symbols.push(symbol)
+        }
+
+
+    }
+    const reels = [];
+
+    for(let i = 0; i < COLS; i++){
+    reels.push([]);
+    const reelSymbols = [...symbols];
+    for(let j = 0; j <ROWS; j++){
+            const randIndex = Math.floor(Math.random() * reelSymbols.length);
+        const chosenSymbol = reelSymbols[randIndex];
+        reels[i].push(chosenSymbol);
+        reelSymbols.splice(randIndex, 1);
+    }
+}
+
+
+return reels;
+}
+
 
 
 
