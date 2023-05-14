@@ -38,7 +38,15 @@ function main ()
 
    const actualBetAmount = getBetAmount(actualMoneyAmount, actualNumberOfLines);
 
-   const reels = spin();
+   const reels = spinMachine();
+
+   const rows = switchingReels(reels);
+
+   printSlotMachine(rows);
+
+   const winnings = getProfit(rows, actualMoneyAmount, actualNumberOfLines);
+
+   finalMessage(winnings);
 
 }
 
@@ -158,7 +166,71 @@ function spinMachine()
 return reels;
 }
 
+function switchingReels(reels){
+    const rows = [];
+    
+    for(let i = 0; i < ROWS; i++){
+        rows.push([]);
+        for(let j = 0; j < COLS; j++){
+            rows[i].push(reels[j][i])
+        }
+    }
 
+
+    return rows; 
+}
+
+function printSlotMachine(rows){
+
+    for(const row of rows){
+        let rowString = "";
+        for (const [i, symbol] of row.entries()){
+            rowString = rowString + symbol;
+            if (i != row.length - 1){
+                rowString = rowString + " | ";
+            }
+        }
+        console.log(rowString);
+    }
+
+}
+
+function getProfit(rows, bet, lines) {
+    let winnings = 0;
+
+    for (let row = 0; row < lines; row++){
+        const symbols = rows[row];
+        let sameSymbols = true;
+
+
+        for (const symbol of symbols) {
+            if(symbol != symbols[0]){
+                sameSymbols = false;
+                break;
+            }
+        }
+
+        if(sameSymbols){
+            winnings = winnings + bet * SYMBOL_VALUES[symbols[0]]; 
+        }
+
+
+    }
+
+    return winnings; 
+
+
+}
+
+function finalMessage(winnings){
+    if(winnings == 0){
+        console.log("Sorry! you did not win anything");
+    }
+    else{
+        console.log("Nice! you just won: $" + winnings);
+    }
+
+}
 
 
 
