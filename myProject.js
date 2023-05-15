@@ -34,9 +34,16 @@ function main ()
 
    let actualMoneyAmount = depositMoney();
 
+   while(true)
+   {
+   
+    displayMoneyAmount(actualMoneyAmount);
+
    const actualNumberOfLines = gettingNumberOfLines();
 
    const actualBetAmount = getBetAmount(actualMoneyAmount, actualNumberOfLines);
+
+   actualMoneyAmount = actualMoneyAmount - actualBetAmount * actualNumberOfLines;
 
    const reels = spinMachine();
 
@@ -46,7 +53,17 @@ function main ()
 
    const winnings = getProfit(rows, actualMoneyAmount, actualNumberOfLines);
 
+   actualMoneyAmount = actualMoneyAmount + winnings;
+
    finalMessage(winnings);
+
+    let again = playAgain();
+
+    if(again){
+        break;
+    }
+
+   }
 
 }
 
@@ -228,6 +245,31 @@ function finalMessage(winnings){
     }
     else{
         console.log("Nice! you just won: $" + winnings);
+    }
+}
+
+function displayMoneyAmount(actualMoneyAmount){
+
+    if(actualMoneyAmount <= 0){
+        console.log("You ran out of money, so yo0u can't use the slot machine anymore");
+
+        
+    }
+
+    console.log("You currently have a balance of $" + actualMoneyAmount);
+
+}
+
+function playAgain(){
+    let again = false;
+    let runAgain = prompt("Would you like to play again? (y/n)? ");
+
+    if (runAgain == "N" || runAgain == "n"){
+        again = true;
+        return again;
+    }
+    else{
+        return again; 
     }
 
 }
