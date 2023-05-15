@@ -261,16 +261,22 @@ function displayMoneyAmount(actualMoneyAmount){
 }
 
 function playAgain(){
+
     let again = false;
-    let runAgain = prompt("Would you like to play again? (y/n)? ");
+    let runAgain = prompt("Would you like to play again (y/n)? ");
+    
+    while(true){
 
     if (runAgain == "N" || runAgain == "n"){
         again = true;
         return again;
-    }
-    else{
+
+    }else if(runAgain == "Y" || runAgain == "y"){
         return again; 
     }
+
+    runAgain = prompt("Invalid input!!! You have to type (y/n) ");  
+}
 
 }
 
