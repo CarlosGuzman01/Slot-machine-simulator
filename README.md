@@ -1,3 +1,3 @@
 # Slot Machine Simulator
 
-Welcome to the Slot Machine Simulator! This is a fun and interactive way to experience the thrill of a slot machine without actually having to go to a casino.
+Welcome to the Slot Machine Simulator! This project was developed by me as an enjoyable and educational endeavor to explore the depths of JavaScript programming. It replicates the experience of a casino-style slot machine.
