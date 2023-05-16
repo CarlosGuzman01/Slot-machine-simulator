@@ -1,12 +1,12 @@
 
-//import package that allows user input
+//import package that allows user input.
 const prompt = require("prompt-sync")();
 
-//global variables
+//global variables.
 const ROWS = 3;
 const COLS = 3;
 
-
+//The amount of symbols of the slot machine.
 const SYMBOLS_AMOUNT = {
     "A": 2,
     "B": 4,
@@ -14,6 +14,7 @@ const SYMBOLS_AMOUNT = {
     "D": 8
 }
 
+//The value of each symbol of the slot machine.
 const SYMBOL_VALUES ={
     "A": 5,
     "B": 4,
@@ -21,11 +22,11 @@ const SYMBOL_VALUES ={
     "D": 2
 }
 
-//calling main function
+//calling main function.
 main();
 
 
-//main function
+//main function.
 function main ()
 {
    const actualAge = welcomeMessage();
@@ -55,7 +56,7 @@ function main ()
 
    actualMoneyAmount = actualMoneyAmount + winnings;
 
-   finalMessage(winnings);
+   displayWinnings(winnings);
 
     let again = playAgain();
 
@@ -66,6 +67,11 @@ function main ()
    }
 
 }
+
+/*
+Function that displays the welcome message, prompts the user to enter his/her age, and validates 
+if the input is valid.
+*/
 
 function welcomeMessage()
 {
@@ -86,7 +92,9 @@ function welcomeMessage()
    }
 }
 
-
+/*
+Function that checks if the user has legal age to use the slot machine or not.
+*/
 function legal(userAge) {
 
     if(userAge >= 18){
@@ -102,7 +110,10 @@ function legal(userAge) {
 
 }
 
-
+/*
+Function that prompts the user to enter the amount of money they want to deposit, and validates
+if the money amount is valid or not.
+*/
 function depositMoney ()
 {
     while(true) 
@@ -123,6 +134,11 @@ function depositMoney ()
     
 }
 
+
+/*
+Function that prompts the user about how many lines they want to bet on the slot machine, 
+and validates if the number of lines is valid or not. 
+*/
 function gettingNumberOfLines()
 {
     while(true){
@@ -138,6 +154,10 @@ function gettingNumberOfLines()
         }
     }
 }
+/*
+Function that prompts the user how much money they want to bet per line, and validates if the bet per line
+is valid or not.
+*/
 
 function getBetAmount(moneyAmount, actualNumberOfLines)
 {
@@ -156,6 +176,9 @@ function getBetAmount(moneyAmount, actualNumberOfLines)
     }
 }
 
+/*
+Function that spins the slot machine 
+*/
 function spinMachine()
 {
     const symbols = [];
@@ -163,7 +186,6 @@ function spinMachine()
         for(let i = 0; i < amount; i++){
             symbols.push(symbol)
         }
-
 
     }
     const reels = [];
@@ -183,6 +205,10 @@ function spinMachine()
 return reels;
 }
 
+
+/*
+Function that switches the position of the reels. The columns become the rows. 
+*/
 function switchingReels(reels){
     const rows = [];
     
@@ -193,10 +219,12 @@ function switchingReels(reels){
         }
     }
 
-
     return rows; 
 }
 
+/*
+Function that iterates through the rows and prints the slot machine. 
+*/
 function printSlotMachine(rows){
 
     for(const row of rows){
@@ -211,6 +239,11 @@ function printSlotMachine(rows){
     }
 
 }
+
+
+/*
+Function that calculates how much money the user gets if he/she wins in the slot machine. 
+*/
 
 function getProfit(rows, bet, lines) {
     let winnings = 0;
@@ -239,7 +272,10 @@ function getProfit(rows, bet, lines) {
 
 }
 
-function finalMessage(winnings){
+/*
+Function that displays any the winnings of the user. 
+*/
+function displayWinnings(winnings){
     if(winnings == 0){
         console.log("Sorry! you did not win anything");
     }
@@ -248,10 +284,15 @@ function finalMessage(winnings){
     }
 }
 
+/*nod
+Function that displays the amount of money that the user currently has
+*/
 function displayMoneyAmount(actualMoneyAmount){
 
     if(actualMoneyAmount <= 0){
-        console.log("You ran out of money, so yo0u can't use the slot machine anymore");
+        console.log("You ran out of money, so you can't use the slot machine anymore");
+
+        process.exit();
 
         
     }
@@ -260,6 +301,11 @@ function displayMoneyAmount(actualMoneyAmount){
 
 }
 
+
+/*
+Function that prompts the user whether he/she wants to use the slot machine again and, validates
+the input. 
+*/
 function playAgain(){
 
     let again = false;
