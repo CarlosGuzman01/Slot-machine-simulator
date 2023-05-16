@@ -1,6 +1,7 @@
 # Slot Machine Simulator! 
 
-![image](https://github.com/CarlosGuzman01/JavaScript-slot-machine-simulator/assets/120758068/3a9ab71c-d8b7-4649-9570-c44f020b0b83)
+![image](https://github.com/CarlosGuzman01/Slot-machine-simulator/assets/120758068/4384c14b-f9b3-4fc3-8d8e-6e4a620793b1)
+
 
 
 
